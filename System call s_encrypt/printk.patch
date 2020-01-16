@@ -1,0 +1,22 @@
+diff --git a/net/socket.c b/net/socket.c
+index 8c24d5d..e24b65d 100644
+--- a/net/socket.c
++++ b/net/socket.c
+@@ -1556,6 +1556,8 @@ int __sys_accept4(int fd, struct sockaddr __user *upeer_sockaddr,
+ 	int err, len, newfd, fput_needed;
+ 	struct sockaddr_storage address;
+ 
++	printk("Debug message shown at accept!\n");	
++
+ 	if (flags & ~(SOCK_CLOEXEC | SOCK_NONBLOCK))
+ 		return -EINVAL;
+ 
+@@ -1659,6 +1661,8 @@ int __sys_connect(int fd, struct sockaddr __user *uservaddr, int addrlen)
+ 	struct sockaddr_storage address;
+ 	int err, fput_needed;
+ 
++	printk("Debug message show at connect!\n");
++
+ 	sock = sockfd_lookup_light(fd, &err, &fput_needed);
+ 	if (!sock)
+ 		goto out;
